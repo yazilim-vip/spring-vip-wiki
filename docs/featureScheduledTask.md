@@ -9,13 +9,13 @@ To define a instance with a task that will be executed periodically.
 
 **Parameters**
 
-|       Parameters       |                      Description                       |
-| :--------------------: | :----------------------------------------------------: |
-|          log           | logger will be used for inform (slf4j logger instance) | . |
-|       threadName       |                   Name of the thread                   |
-|     threadInterval     |         Interval of the thread in milliseconds         |
-| errorTryCountThreshold |          Threshold to try on error condition           |
-|     errorSleepTime     |         Time to sleep on error in milliseconds         |
+| Parameters             | Description                                            |
+| :--------------------- | :----------------------------------------------------- |
+| log                    | logger will be used for inform (slf4j logger instance) |
+| threadName             | Name of the thread                                     |
+| threadInterval         | Interval of the thread in milliseconds                 |
+| errorTryCountThreshold | Threshold to try on error condition                    |
+| errorSleepTime         | Time to sleep on error in milliseconds                 |
 
 ### Example
 
