@@ -1,7 +1,7 @@
 name: Wiki Publisher
 on:
   push:
-      branches: [master]
+      branches: [main]
 jobs:
   wiki_build:
     runs-on: ubuntu-latest
