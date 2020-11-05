@@ -6,7 +6,6 @@ module.exports = {
       "featureGenericCrudRest",
       "featureScheduledTask",
       "featureUtilityClasses",
-    ],
-    Temp: ["styleGuide"],
+    ]
   },
 };
