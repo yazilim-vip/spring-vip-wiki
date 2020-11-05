@@ -35,3 +35,5 @@ At the end of the day, you will have the following;
 ### 5) Create generic rest controller
 <Gist id="868d2ef37d839123f05f189ec4fd9a76" file="RestPerson.java" />
 
+## **More Examples**
+https://github.com/yazilim-vip/spring-vip-examples/
