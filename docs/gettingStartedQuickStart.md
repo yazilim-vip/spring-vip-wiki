@@ -9,7 +9,7 @@ import Gist from 'react-gist';
 ## Add library as dependency
 ```xml
 <dependency>
-    <groupId>vip.yazilim.libs</groupId>
+    <groupId>vip.yazilim</groupId>
     <artifactId>spring-vip</artifactId>
     <version>VERSION</version>
 </dependency>
