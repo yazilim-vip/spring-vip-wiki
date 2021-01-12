@@ -46,7 +46,7 @@ function Version() {
         <div className="margin-bottom--lg">
           <table>
             <tbody>
-              {releases &&
+              {releases ? (
                 Object.keys(releases).map((value, index) => {
                   const release = releases[value];
                   return (
@@ -57,7 +57,10 @@ function Version() {
                       </td>
                     </tr>
                   );
-                })}
+                })
+              ) : (
+                <div>loading...</div>
+              )}
             </tbody>
           </table>
         </div>
