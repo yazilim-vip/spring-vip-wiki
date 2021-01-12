@@ -13,7 +13,9 @@ import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-import versions from "../../versions.json";
+// import versions from "../../versions.json";
+
+const versions = ["0.1.00.220"];
 
 function Version() {
   // const context = useDocusaurusContext();
@@ -29,7 +31,7 @@ function Version() {
       <div className="container margin-vert--xl">
         <h1>Spring VIP - Versions</h1>
 
-        {hasPastVersion && (
+        {latestVersion && (
           <div className="margin-bottom--lg">
             <h3 id="latest">Latest version (Stable)</h3>
             <p>Here you can find the latest documentation.</p>
@@ -40,7 +42,6 @@ function Version() {
                   <td>
                     <Link to={useBaseUrl("/docs/")}>Documentation</Link>
                   </td>
-                  .
                   <td>
                     <Link
                       to={`https://github.com/yazilim-vip/spring-vip/releases/tag/v${latestVersion}`}
@@ -62,7 +63,11 @@ function Version() {
               <tr>
                 <th>master</th>
                 <td>
-                  <Link to={useBaseUrl(hasPastVersion?"/docs/next/":"/docs/")}>Documentation</Link>
+                  <Link
+                    to={useBaseUrl(hasPastVersion ? "/docs/next/" : "/docs/")}
+                  >
+                    Documentation
+                  </Link>
                 </td>
               </tr>
             </tbody>
