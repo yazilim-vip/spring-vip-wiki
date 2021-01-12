@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Layout from "@theme/Layout";
 
@@ -18,6 +18,18 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 const versions = ["0.1.00.220"];
 
 function Version() {
+  const [releases, setReleases] = useState(undefined);
+  // const response = octokit.request("GET /orgs/{org}/repos", {
+  //   org: "yazilim-vip",
+  //   type: "private",
+  // });
+  // console.log(response);
+  useEffect(() => {
+    fetch("https://api.github.com/repos/yazilim-vip/spring-vip/releases")
+      .then((response) => response.json())
+      .then((data) => setReleases(data));
+  }, []);
+
   // const context = useDocusaurusContext();
   // const { siteConfig = {} } = context;
   const [latestVersion] = versions;
@@ -29,85 +41,26 @@ function Version() {
       description="Neutron JS - CLI Versions page listing all documented site versions"
     >
       <div className="container margin-vert--xl">
-        <h1>Spring VIP - Versions</h1>
-
-        {latestVersion && (
-          <div className="margin-bottom--lg">
-            <h3 id="latest">Latest version (Stable)</h3>
-            <p>Here you can find the latest documentation.</p>
-            <table>
-              <tbody>
-                <tr>
-                  <th>{`v${latestVersion}`}</th>
-                  <td>
-                    <Link to={useBaseUrl("/docs/")}>Documentation</Link>
-                  </td>
-                  <td>
-                    <Link
-                      to={`https://github.com/yazilim-vip/spring-vip/releases/tag/v${latestVersion}`}
-                    >
-                      Release Notes
-                    </Link>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        )}
+        <h1>Spring VIP - Releases</h1>
 
         <div className="margin-bottom--lg">
-          <h3 id="next">Next version (Unreleased)</h3>
-          <p>Here you can find the documentation for unreleased version.</p>
           <table>
             <tbody>
-              <tr>
-                <th>master</th>
-                <td>
-                  <Link
-                    to={useBaseUrl(hasPastVersion ? "/docs/next/" : "/docs/")}
-                  >
-                    Documentation
-                  </Link>
-                </td>
-              </tr>
+              {releases &&
+                Object.keys(releases).map((value, index) => {
+                  const release = releases[value];
+                  return (
+                    <tr key={release.tag_name}>
+                      <th>{release.tag_name}</th>
+                      <td>
+                        <Link to={release.html_url}>Release Notes</Link>
+                      </td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
         </div>
-
-        {pastVersions.length > 0 && (
-          <div className="margin-bottom--lg">
-            <h3 id="archive">Past Versions</h3>
-            <p>
-              Here you can find documentation for previous versions of
-              Docusaurus.
-            </p>
-            <table>
-              <tbody>
-                {pastVersions.map((version) => (
-                  <tr key={version}>
-                    <th>{`v${version}`}</th>
-                    <td>
-                      <Link
-                        to={useBaseUrl(
-                          `/docs/${version}/introduction/getting-started`
-                        )}
-                      >
-                        Documentation
-                      </Link>
-                    </td>
-                    <td>
-                      <Link
-                        to={`https://github.com/yazilim-vip/spring-vip/-/tags/v${version}`}
-                      >
-                        Release Notes
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
       </div>
     </Layout>
   );
