@@ -4,6 +4,8 @@ title: Utility Classes
 sidebar_label: Utility Classes
 ---
 
+import Gist from 'react-gist';
+
 ## jsonRequest Method
 
 To Make an HTTP request to a REST Service
@@ -22,3 +24,10 @@ To Make an HTTP request to a REST Service
 | restTemplate   | the Spring RestTemplate instance to make http requests                    |
 
 Returns HTTP response returned by  endpoint
+
+
+## Example Usage
+
+<Gist id="868d2ef37d839123f05f189ec4fd9a76"
+      file="JsonRequestExample.java"
+/>
